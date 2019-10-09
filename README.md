@@ -6,6 +6,8 @@ When ran, BankSim simulates the transactions of 10 accounts whose total initial 
 
 The major race condition that inhibits the successful execution of the Bank can be found in the transfer function which calls the test function. While withdrawing an amount from one account and depositing the same amount to another account, BankSim encounters a problem when multiple threads try to modify data simultaneously. Since multiple accounts will be accessing Bank at the same time, this can create a problem where the accounts can disrupt the transfer process by accessing funds before or after their designated time, resulting in funds being lost or gained from the total balance of 100,000, thus leading to BankSim closing.
 
+![Use Case Image](BankUMLSequenceDiagram.JPG)
+
 ### Task 2
 
 Synchronized locks does not offer any mechanism of waiting queue in which after the execution of one thread any thread running in parallel can acquire the lock. Due to which the thread which is there in the system and running for a longer period of time never gets chance to access the shared resource thus leading to starvation.
