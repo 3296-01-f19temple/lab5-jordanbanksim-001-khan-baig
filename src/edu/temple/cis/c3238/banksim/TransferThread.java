@@ -1,17 +1,18 @@
 package edu.temple.cis.c3238.banksim;
+
 /**
  * @author Cay Horstmann
  * @author Modified by Paul Wolfgang
  * @author Modified by Charles Wang
  */
-class TransferThread extends Thread {
 
+class TransferThread extends Thread {
     private final Bank bank;
     private final int fromAccount;
     private final int maxAmount;
 
-    public TransferThread(Bank b, int from, int max) {
-        bank = b;
+    public TransferThread(Bank bank, int from, int max) {
+        this.bank = bank;
         fromAccount = from;
         maxAmount = max;
     }
@@ -23,6 +24,6 @@ class TransferThread extends Thread {
             int amount = (int) (maxAmount * Math.random());
             bank.transfer(fromAccount, toAccount, amount);
         }
-    
+        bank.closeBank();
     }
 }

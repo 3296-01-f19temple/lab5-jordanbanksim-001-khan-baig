@@ -5,6 +5,7 @@ package edu.temple.cis.c3238.banksim;
  * @author Modified by Paul Wolfgang
  * @author Modified by Charles Wang
  */
+
 public class Account {
 
     private volatile int balance;
@@ -17,16 +18,15 @@ public class Account {
         balance = initialBalance;
     }
 
-    //Sync -- this takes care of mutual exclusion
-    public synchronized int getBalance() {
+    public int getBalance() {
         return balance;
     }
+    
 
-    // Sync
     public synchronized boolean withdraw(int amount) {
         if (amount <= balance) {
             int currentBalance = balance;
-//            Thread.yield(); // force collision
+            Thread.yield(); // Try to force collision
             int newBalance = currentBalance - amount;
             balance = newBalance;
             return true;
@@ -35,13 +35,12 @@ public class Account {
         }
     }
 
-    
-    //Sync
     public synchronized void deposit(int amount) {
         int currentBalance = balance;
-//        Thread.yield();   // force collision
+        Thread.yield();   // Try to force collision
         int newBalance = currentBalance + amount;
         balance = newBalance;
+        notifyAll();
     }
     
     @Override

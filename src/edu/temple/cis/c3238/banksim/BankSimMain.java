@@ -5,6 +5,7 @@ package edu.temple.cis.c3238.banksim;
  * @author Modified by Paul Wolfgang
  * @author Modified by Charles Wang
  */
+
 public class BankSimMain {
 
     public static final int NACCOUNTS = 10;
@@ -23,4 +24,3 @@ public class BankSimMain {
           System.out.printf("Bank transfer is in the process.\n");
     }
 }
-
