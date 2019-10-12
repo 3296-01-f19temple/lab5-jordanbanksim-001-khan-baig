@@ -1,5 +1,11 @@
 package edu.temple.cis.c3238.banksim;
 
+/**
+ * @author Cay Horstmann
+ * @author Modified by Paul Wolfgang
+ * @author Modified by Charles Wang
+ */
+
 class TransferThread extends Thread {
     private final Bank bank;
     private final int fromAccount;
