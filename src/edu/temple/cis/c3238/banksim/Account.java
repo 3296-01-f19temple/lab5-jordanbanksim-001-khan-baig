@@ -17,14 +17,16 @@ public class Account {
         balance = initialBalance;
     }
 
-    public int getBalance() {
+    //Sync -- this takes care of mutual exclusion
+    public synchronized int getBalance() {
         return balance;
     }
 
-    public boolean withdraw(int amount) {
+    // Sync
+    public synchronized boolean withdraw(int amount) {
         if (amount <= balance) {
             int currentBalance = balance;
-//            Thread.yield(); // Try to force collision
+//            Thread.yield(); // force collision
             int newBalance = currentBalance - amount;
             balance = newBalance;
             return true;
@@ -33,9 +35,11 @@ public class Account {
         }
     }
 
-    public void deposit(int amount) {
+    
+    //Sync
+    public synchronized void deposit(int amount) {
         int currentBalance = balance;
-//        Thread.yield();   // Try to force collision
+//        Thread.yield();   // force collision
         int newBalance = currentBalance + amount;
         balance = newBalance;
     }
