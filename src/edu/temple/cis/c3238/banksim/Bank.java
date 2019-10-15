@@ -32,7 +32,7 @@ public class Bank {
     }
 
     public void transfer(int from, int to, int amount) {
-        //accounts[from].waitForAvailableFunds(amount);
+        accounts[from].waitForAvailableFunds(amount);
         if (!open) {
             return;
         }
