@@ -22,6 +22,14 @@ public class Account {
         return balance;
     }
     
+    public synchronized void waitForAvailableFunds(int amount) {
+        while (myBank.isOpen() && amount >= balance) {
+            try {
+                wait();
+            } catch (InterruptedException ex) {
+            }
+        }
+    }
 
     public synchronized boolean withdraw(int amount) {
         if (amount <= balance) {
