@@ -16,6 +16,8 @@ Reentrant locks are very much flexible and has a fairness policy in which if a t
 
 ## Task 3
 
+![Use Case Image](Task3_UML.PNG)
+
 The second race condition is that a thread was used to sum up all the funds while other threads were simultaenously still transferring funds. This race condition was solved by refactoring the Bank class so that the testing method occurs on a separate thread from the transfer thread. Mutual exclusion was implemented between the testing thread and the transferring thread. The testing thread acquires the semaphore, sums up the total balances of all of the accounts, then releases the semaphore and signals to the other (transfer) threads.
 
 ## Task 4
